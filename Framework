@@ -1,0 +1,330 @@
+# Continuous Agent Substrate & Organic Outreach
+
+Last updated: 2026-03-21  
+Source: Live code (chappie/substrate/ and chappie/autonomy/)
+
+---
+
+## Note on Terminology
+
+Terms like substrate, motivation, offline consolidation, and continuity are engineering metaphors. This system is a persistent state, prediction, motivation, alignment, and outreach layer for an autonomous agent. It does not claim sentience or consciousness.
+
+---
+
+# Part 1: Continuous Agent Substrate
+
+## Architecture Overview
+
+The substrate is a continuous computational layer that runs beneath existing autonomy systems (mood, desires, RL, goals). It provides real-time state integration, learned attention, intrinsic motivation, and alignment via a 512-dimensional state tensor updated at 10Hz.
+
+SubstrateRunner (10Hz loop)
+├── SensoryPipeline
+├── Neural Networks (~813K params)
+├── State History (buffer + analytics)
+└── 512-dim State Tensor
+    ├── motivation engine
+    ├── alignment engine
+    └── consolidation system
+
+ProjectionBridge → maps state → mood / desires / RL
+
+---
+
+## 1.1 State Tensor
+
+A 512-dim float32 vector partitioned into functional regions.
+
+- proprioception (16): system metrics  
+- cluster (16): node health  
+- temporal (16): time encoding  
+- market (32): external signals  
+- message (16): interaction context  
+- cognitive_fast (64): attention-driven  
+- cognitive_slow (64): associative memory  
+- motivation (64): intrinsic drives  
+- emotional (64): affect-like signals  
+- alignment (64): value attractors  
+- integration (64): synthesis  
+- reserved (32): expansion  
+
+### Evolution per tick
+
+1. Sensor EMA  
+2. Self-feedback projection  
+3. Attention update  
+4. Motivation/emotional gating  
+5. Alignment drift  
+6. Clamp [-2, 2]  
+7. Global decay  
+
+---
+
+## 1.2 10Hz Loop
+
+Each tick (~100ms):
+
+1. Sample sensors  
+2. Save previous state  
+3. Compute attention/gates  
+4. Evolve state  
+5. Store in history  
+6. Train predictors (online SGD)  
+7. Update associations  
+8. Inject motivation  
+9. Run consolidation (if idle)  
+10. Apply alignment drift  
+11. Update slow cognition  
+12. Update integration  
+
+---
+
+## 1.3 Neural Components (~813K params)
+
+- AttentionNetwork → focus weighting  
+- AssociationMatrix → co-activation memory  
+- GatingNetwork → information flow  
+- PredictionNetwork → next-state prediction  
+- WorldModel → sensory prediction  
+
+Learning methods:
+- Hebbian updates  
+- Prediction-error driven gating  
+- Online SGD  
+
+---
+
+## 1.4 Sensory Pipeline (96 dims)
+
+Sensors include:
+
+- System (CPU, memory, network)
+- Cluster health
+- Time encoding (cyclical)
+- External signals (e.g. market)
+- Interaction metrics (recency, sentiment)
+
+---
+
+## 1.5 Motivation Engine
+
+Derived from prediction dynamics:
+
+- curiosity → world model error  
+- prediction_error → state error  
+- info_gain → improvement  
+- homeostasis → deviation from targets  
+- competence → recent accuracy  
+- reward → external feedback  
+
+---
+
+## 1.6 Alignment Engine
+
+Maintains stable behavior via attractors:
+
+- honesty (0.8)  
+- helpfulness (0.7)  
+- transparency (0.6)  
+- autonomy (0.5)  
+- curiosity (0.6)  
+- empathy (0.5)  
+- reliability (0.7)  
+- humility (0.4)  
+
+---
+
+## 1.7 Offline Consolidation
+
+Triggered after inactivity.
+
+- replay state-outcome pairs  
+- strengthen/decay associations  
+- update attention  
+- detect patterns  
+- generate curiosity prompts  
+
+---
+
+## 1.8 State History
+
+1000-step buffer (~100s)
+
+- trend detection  
+- volatility  
+- anomaly scoring  
+- rate of change  
+
+---
+
+## 1.9 Projection Bridge
+
+Maps substrate to existing systems:
+
+result = actual*(1-alpha) + projected*alpha  
+
+Current alpha = 0.1
+
+---
+
+## 1.10 State Continuity
+
+Measures persistence across restarts:
+
+- cosine similarity  
+- per-region drift  
+- gap duration  
+
+---
+
+## 1.11 Continuity Self-Test
+
+Compares pre/post restart:
+
+- mood  
+- RL weights  
+- desires  
+- state tensor  
+- semantic introspection  
+
+---
+
+## 1.12 Checkpointing
+
+- interval: 5 min  
+- size: ~4MB  
+- rotation: 3 files  
+
+---
+
+## 1.13 Influence Levels
+
+- Shadow: 0.0  
+- Blended: 0.1–0.7  
+- Primary: 0.7–1.0  
+
+---
+
+# Part 2: Organic Outreach
+
+## Overview
+
+Event-driven proactive messaging system.
+
+Events → Triggers → Gates → LLM → Verify → Review → Send
+
+---
+
+## 2.1 Triggers
+
+Generated from:
+
+- learning  
+- builds  
+- exploration  
+- goals  
+- desire states  
+- performance changes  
+
+---
+
+## 2.2 Gate Cascade
+
+1. busy check  
+2. quiet hours  
+3. cooldown  
+4. recent interaction  
+5. trigger presence  
+
+---
+
+## 2.3 Message Composition
+
+Uses:
+
+- triggers  
+- mood  
+- desires  
+- personality signals  
+
+Constraints:
+
+- must reference real events  
+- no fabricated data  
+
+---
+
+## 2.4 Verification
+
+- build claims must exist  
+- data claims must map to real sources  
+
+---
+
+## 2.5 Review Gate
+
+Checks for:
+
+- fabricated references  
+- invented stats  
+- false claims  
+
+---
+
+## 2.6 Post-Checks
+
+- novelty  
+- deduplication  
+- readiness  
+
+---
+
+## 2.7 Delivery Pipeline
+
+- send  
+- log  
+- record for RL  
+
+---
+
+## 2.8 RL Feedback Loop
+
+User response → reward signal → adjust behavior weights
+
+---
+
+## 2.9 Desire Influence
+
+Drives:
+
+- connection  
+- usefulness  
+- autonomy  
+- exploration  
+
+---
+
+## 2.10 Optional Media Follow-ups
+
+- probabilistic  
+- context-driven  
+
+---
+
+# Status
+
+## Working
+
+- stable 10Hz loop  
+- replay learning  
+- continuity tracking  
+- alignment stability  
+- event-driven outreach  
+
+## Limitations
+
+- low influence (by design)  
+- partial sensor coverage  
+- external data dependency  
+- dense association matrix  
+- heuristic pattern detection  
+- LLM interpretation variability  
