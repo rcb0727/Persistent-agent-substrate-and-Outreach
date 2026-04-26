@@ -1,6 +1,10 @@
 Chappie is an experiment in building agents that don’t reset every time you talk to them.
 
-A couple days ago I shared this project and it got a lot more attention than I expected. A lot of people asked how it actually works, so I put the underlying system into a framework/blueprint you can explore here.
+A couple days ago I shared this project and it got a lot more attention than I expected. 
+
+https://www.reddit.com/r/LocalLLM/s/58dVwyBLVu
+
+A lot of people asked how it actually works, so I put the underlying system into a framework/blueprint you can explore here.
 
 The core idea is simple:
 
